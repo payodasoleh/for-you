@@ -1,0 +1,535 @@
+/* ==================================
+   LITTLE LETTER - STYLE (RESPONSIVE)
+   ================================== */
+
+:root {
+  --background: #f0f8ff;
+  --paper: #fcfeff;
+  --sea: #72b5d8;
+  --sea-dark: #367da5;
+  --text: #344b5e;
+  --muted: #819aaa;
+  --border: #d5e8f3;
+  --shadow: 0 18px 55px rgba(55, 111, 148, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 10% 10%, #d9efff 0, transparent 38%),
+    radial-gradient(ellipse at 90% 85%, #c8e7f5 0, transparent 40%),
+    linear-gradient(135deg, #f4faff, #eaf6ff);
+  color: var(--text);
+  font-family: "Segoe UI", sans-serif;
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--sea-dark);
+  outline-offset: 4px;
+}
+
+.topbar {
+  width: min(1100px, 90%);
+  margin: auto;
+  padding: 25px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  flex-wrap: wrap; /* Tambahan agar aman jika layar sangat kecil */
+  gap: 10px;
+}
+
+.brand {
+  color: var(--text);
+  text-decoration: none;
+  font-family: Georgia, serif;
+  font-size: 20px;
+  font-style: italic;
+}
+
+.brand span,
+.accent {
+  color: var(--sea-dark);
+}
+
+.music-button {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--text);
+  padding: 10px 15px;
+  border-radius: 30px;
+  font-size: 12px;
+  transition: 0.25s;
+}
+
+.music-button:hover {
+  background: white;
+  transform: translateY(-2px);
+}
+
+main {
+  width: 100%;
+  min-height: 75vh;
+  position: relative;
+  z-index: 1;
+}
+
+.screen {
+  display: none;
+  width: 100%;
+  padding: 45px 20px 65px;
+}
+
+.screen.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.7s ease both;
+}
+
+.intro,
+.ending-card {
+  width: min(100%, 560px);
+  text-align: center;
+}
+
+.eyebrow {
+  color: var(--sea-dark);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  line-height: 1.8;
+}
+
+h1,
+h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -1px;
+}
+
+h1 {
+  font-size: clamp(32px, 7vw, 56px);
+  margin: 28px 0 14px;
+}
+
+h2 {
+  font-size: clamp(26px, 6vw, 43px);
+  line-height: 1.2;
+  margin: 14px 0 20px;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+  max-width: 410px;
+  margin: 0 auto;
+}
+
+/* --- AMPLOP --- */
+.envelope-wrap {
+  width: 210px;
+  height: 155px;
+  margin: 42px auto 10px;
+  display: grid;
+  place-items: center;
+  perspective: 700px;
+}
+
+.envelope {
+  width: 190px;
+  height: 125px;
+  position: relative;
+  filter: drop-shadow(0 14px 12px rgba(55, 111, 148, 0.18));
+  transition: transform 0.5s ease;
+}
+
+.envelope-wrap:hover .envelope {
+  transform: translateY(-5px) rotate(-2deg);
+}
+
+.envelope-back,
+.envelope-front {
+  position: absolute;
+  inset: 0;
+  border-radius: 5px;
+  background: #83bfdf;
+}
+
+.envelope-back {
+  background: #a8d5ed;
+}
+
+.letter-preview {
+  position: absolute;
+  z-index: 1;
+  top: 8px;
+  left: 12px;
+  right: 12px;
+  height: 105px;
+  background: #fcfeff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 7px;
+  color: var(--sea-dark);
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 15px;
+}
+
+.mini-heart {
+  font-size: 23px;
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 5px;
+  background: #a8d5ed;
+}
+
+.envelope-front {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  background: #83bfdf;
+  border-radius: 5px;
+  clip-path: polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%);
+}
+
+.envelope-flap {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  background: #c3e4f5;
+  clip-path: polygon(0 0, 100% 0, 50% 65%);
+  transform-origin: top;
+  transition: transform 0.7s ease;
+}
+
+.envelope-wrap.open .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+.envelope-wrap.open .letter-preview {
+  animation: letterRise 0.9s 0.25s ease both;
+}
+
+/* --- TOMBOL --- */
+.primary-button,
+.secondary-button {
+  border-radius: 30px;
+  padding: 14px 24px;
+  font-size: 13px;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.primary-button {
+  margin-top: 28px;
+  border: none;
+  background: var(--sea);
+  color: white;
+  box-shadow: 0 8px 20px rgba(55, 111, 148, 0.25);
+}
+
+.primary-button span {
+  margin-left: 10px;
+}
+
+.primary-button:hover,
+.secondary-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(55, 111, 148, 0.2);
+}
+
+.secondary-button {
+  margin-top: 28px;
+  color: var(--sea-dark);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.small-note {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  margin-top: 24px;
+}
+
+/* --- SURAT --- */
+.letter-card {
+  width: min(100%, 650px);
+  background: rgba(252, 254, 255, 0.94);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: clamp(20px, 5vw, 55px); /* Diperkecil sedikit untuk HP */
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.letter-card::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid #e3f0f8;
+  border-radius: 5px;
+  pointer-events: none;
+}
+
+.letter-card > * {
+  position: relative;
+}
+
+.letter-decoration {
+  font-size: 28px;
+  color: var(--sea);
+  margin-top: 15px;
+}
+
+.letter-content {
+  margin-top: 30px;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  line-height: 2;
+}
+
+.letter-content p {
+  margin-bottom: 18px;
+}
+
+.signature {
+  padding-top: 8px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.signature span {
+  color: var(--sea-dark);
+}
+
+.letter-card .primary-button {
+  display: block;
+  margin: 28px auto 0;
+}
+
+/* --- ENDING --- */
+.ending-card h2 {
+  margin-top: 15px;
+}
+
+.ending-note {
+  max-width: 420px;
+  margin: 25px auto 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+footer {
+  padding: 22px 15px 28px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.7px;
+}
+
+/* --- BUBBLE FOTO (DIPERBAIKI) --- */
+.big-bubble {
+  /* Menggunakan clamp agar ukurannya fleksibel (min 130px, maks 180px) */
+  width: clamp(130px, 35vw, 180px);
+  height: clamp(130px, 35vw, 180px); 
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(91, 173, 215, 0.7);
+  
+  background-image: url('assets/miaww.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  box-shadow: 0 0 40px rgba(91, 173, 215, 0.35), inset 0 0 22px rgba(255, 255, 255, 0.6);
+  animation: breathe 1.8s ease-in-out infinite;
+}
+
+/* --- PERTANYAAN MAAF --- */
+[hidden] {
+  display: none !important;
+}
+
+.ask {
+  margin-top: 34px;
+}
+
+.ask-title {
+  font-family: Georgia, serif;
+  font-size: 20px;
+}
+
+.choices {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.secondary-button.flee {
+  position: fixed;
+  z-index: 20;
+  margin: 0;
+  transition: left 0.25s, top 0.25s;
+}
+
+.reply {
+  margin-top: 22px;
+  color: var(--sea-dark);
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.spark {
+  position: fixed;
+  z-index: 40;
+  width: 8px;
+  height: 8px;
+  margin: -4px;
+  border-radius: 50%;
+  background: var(--sea);
+  pointer-events: none;
+}
+
+/* --- ANIMASI --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes letterRise {
+  from { transform: translateY(0); }
+  to { transform: translateY(-30px); }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); } /* Skala diperkecil dari 1.1 agar tidak menabrak teks di HP */
+}
+
+@keyframes floatUp {
+  from { transform: translateX(0); opacity: 0; }
+  15% { opacity: 0.7; }
+  to { transform: translate(24px, -115vh); opacity: 0; }
+}
+
+/* ==================================
+   TAMPILAN HP & TABLET (RESPONSIVE)
+   ================================== */
+@media (max-width: 768px) {
+  .topbar {
+    padding: 15px 0;
+    justify-content: center; /* Tombol musik turun ke tengah jika sempit */
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .screen {
+    padding: 30px 15px 45px; /* Padding dikurangi agar layar tidak terlalu kosong */
+  }
+
+  .envelope-wrap {
+    margin-top: 25px;
+    width: 180px; /* Amplop sedikit dikecilkan */
+    height: 135px;
+  }
+  
+  .envelope {
+    width: 160px;
+    height: 110px;
+  }
+
+  .letter-preview {
+    height: 90px;
+    font-size: 14px;
+  }
+
+  .letter-content {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .ask-title {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
+  /* Tombol jadi lebar penuh di HP agar mudah dipencet */
+  .choices {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .choices .primary-button, 
+  .choices .secondary-button {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  /* Saat tombol "Belum dulu" kabur, ukurannya jangan terlalu lebar */
+  .secondary-button.flee {
+    width: auto !important;
+    max-width: 200px;
+  }
+
+  .background-bubbles {
+    opacity: 0.6; /* Gelembung background dibuat transparan agar tidak mengganggu teks */
+  }
+}
+
+/* Untuk HP yang sangat kecil (seperti iPhone SE) */
+@media (max-width: 380px) {
+  h1 { font-size: 28px; }
+  h2 { font-size: 24px; }
+  
+  .big-bubble {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .letter-card {
+    padding: 20px 15px;
+  }
+}
+
+/* Menghormati pengaturan pengurangan animasi */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f0f8ff">
+  <title>for You</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="background-bubbles" id="backgroundBubbles" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a href="#" class="brand"> a little letter <span><i class="bubble"></i></span></a>
+    <button id="musicButton" class="music-button" type="button">
+      ♫ Musik: Mati
+    </button>
+  </header>
+
+  <main>
+    <!-- HALAMAN PEMBUKA -->  
+    <section id="home" class="screen active">
+      <div class="intro">
+        <p class="eyebrow">FOR YOU</p>
+
+        <div class="envelope-wrap" id="envelope">
+          <div class="envelope">
+            <div class="envelope-back"></div>
+            <div class="letter-preview">
+              <span>for my unyaa</span>
+              <span class="mini-heart"><i class="bubble"></i></span>
+            </div>
+            <div class="envelope-flap"></div>
+            <div class="envelope-front"></div>
+            <div class="envelope-bubble"></div>
+          </div>
+        </div>
+
+        <h1>Hey, atmin unyaa<span class="accent">.</span></h1>
+        <p class="subtitle">
+          kepoo yaa
+        </p>
+
+        <button id="openButton" class="primary-button" type="button">
+          Buka suratku <span>↗</span>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- HALAMAN SURAT -->
+    <section id="letterPage" class="screen">
+      <article class="letter-card">
+        <p class="eyebrow"></p>
+        <div class="letter-decoration">✿</div>
+        <h2>sorry atminn</h2>
+
+        <div id="letterContent" class="letter-content">
+          <p>Hai, atminn</p>
+
+          <p>
+           aku minta maaf ya udah salah kemarin, aku ga bermaksud tiba tiba offcam gitu, cuman aku kaget aja soalnya kemarin temen yanna pada nyerbu dc yg bikin aku panik, kirain yang join itu temen-temen yanna, maaf yaa atminn✿
+          </p>
+
+          <p class="signature">
+            Dari Pay,<br>
+            <span>gomenne atminn <i class="bubble"></i></span>
+          </p>
+        </div>
+
+        <button id="finishButton" class="primary-button" type="button">
+           <span><i class="bubble"></i></span>
+        </button>
+      </article>
+    </section>
+
+    <!-- HALAMAN PENUTUP -->
+    <section id="ending" class="screen">
+      <div class="ending-card">
+        <div class="big-bubble" aria-hidden="true"></div>
+        <p class="eyebrow">ONE LAST THING</p>
+        <h2>Sankyuu atminn</h2>
+
+        <p class="subtitle">
+        </p>
+
+        <p class="ending-note">
+        </p>
+
+
+        <div class="ask">
+          <p class="ask-title">Jadi, maafin kan?</p>
+          <div class="choices" id="choices">
+            <button id="yesButton" class="primary-button" type="button">Iya, dimaafin</button>
+            <button id="noButton" class="secondary-button" type="button">Belum dulu</button>
+          </div>
+          <p id="reply" class="reply" hidden>
+            Makasih atminn, sudah mau memaafkan.
+          </p>
+        </div>
+
+        <button id="restartButton" class="secondary-button" type="button" hidden>
+           Baca lagi dari awal ↺
+        </button>
+
+        <p class="small-note"> </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><i class="bubble"></i></p>
+  </footer>
+
+  <audio id="backgroundMusic" loop preload="none">
+    <source src="assets/music.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
